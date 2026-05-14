@@ -1,0 +1,6 @@
+# arquivos de sistema e cache do Python
+__pycache__/
+.venv/
+env/
+
+# palpites/
