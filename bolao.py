@@ -5,7 +5,6 @@ import glob
 import os
 
 # %%
-
 # declarando a lista de tabelas
 tabelas_separadas = []
 
@@ -175,6 +174,7 @@ tabela_final = pd.merge(todos_palpites, gabarito_limpo,
 tabela_final = tabela_final.set_index("idJogo")
 
 # %%
+# identificando fases do mata-mata
 filtro = tabela_final["fase"] == "16 avos"
 times_16avos = pd.concat([tabela_final[filtro].iloc[0:16, 8], 
                           tabela_final[filtro].iloc[0:16, 11]])
@@ -298,6 +298,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_oitavas))))
     &
     (tabela_final["fase"] == "oitavas")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 2
 
@@ -307,6 +309,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_oitavas))
     &              
     (tabela_final["fase"] == "oitavas")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 4
 
@@ -320,6 +324,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_quartas))))
     &
     (tabela_final["fase"] == "quartas")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 4
 
@@ -329,6 +335,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_quartas))
     &              
     (tabela_final["fase"] == "quartas")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 8
 
@@ -342,6 +350,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_semifinal))))
     &
     (tabela_final["fase"] == "semifinal")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 8
 
@@ -351,6 +361,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_semifinal))
     &              
     (tabela_final["fase"] == "semifinal")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 16
 
@@ -364,6 +376,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_final))))
     &
     (tabela_final["fase"] == "final")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 16
 
@@ -373,6 +387,8 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_final))
     &              
     (tabela_final["fase"] == "final")
+    &
+    jogo_ocorreu
     ), "pontos"
 ] = 32
 
@@ -393,6 +409,8 @@ for participante, palpite in campeoes_palpites.items():
             &
             (tabela_final["participante"] == participante)
             ), "pontos"
+            &
+            jogo_ocorreu
         ] = 48
 
         tabela_final.loc[(
@@ -403,6 +421,8 @@ for participante, palpite in campeoes_palpites.items():
             (tabela_final["fase"] == "final")
             &
             (tabela_final["participante"] == participante)
+            &
+            jogo_ocorreu
             ), "pontos"
         ] = 64
 
@@ -425,6 +445,8 @@ for participante, palpite in terceiro_palpites.items():
             (tabela_final["fase"] == "3º lugar")
             &
             (tabela_final["participante"] == participante)
+            &
+            jogo_ocorreu
             ), "pontos"
         ] = 16
 
