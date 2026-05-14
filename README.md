@@ -49,7 +49,7 @@ O algoritmo processa diferentes pesos para cada fase do torneio:
 **🚀 Como Executar**
 
 Clone o repositório:
-git clone https://github.com/SeuUsuario/bolao-copa-etl-pandas.git
+git clone https://github.com/vitinhovalle/bolao-copa-etl-pandas.git
 
 Instale as dependências:
 pip install pandas openpyxl
@@ -58,7 +58,7 @@ Coloque as planilhas dos participantes na pasta /palpites.
 Atualize o gabarito.xlsx com os resultados reais.
 
 Execute o script:
-python bolao_copa.py
+python bolao.py
 
 
 **🧠 Desafios Superados**
