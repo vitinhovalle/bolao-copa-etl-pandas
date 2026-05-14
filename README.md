@@ -8,13 +8,9 @@ O sistema foi desenvolvido para lidar com as complexidades de um torneio real, i
 **🛠️ Tecnologias Utilizadas**
 
 Python 3.x
-
 Pandas: Biblioteca principal para manipulação e análise de dados.
-
 Glob: Para leitura dinâmica de múltiplos arquivos no sistema.
-
 Openpyxl: Engine para suporte e formatação de arquivos Excel.
-
 OS: Manipulação de caminhos e nomes de arquivos.
 
 
@@ -22,27 +18,23 @@ OS: Manipulação de caminhos e nomes de arquivos.
 
 O script segue o modelo de pipeline ETL:
 
-Extração (Extract): O sistema varre a pasta /palpites utilizando glob, identifica cada participante pelo nome do arquivo e lê as planilhas individuais. Também extrai os dados oficiais do arquivo gabarito.xlsx.
+Extração (Extract): 
+O sistema varre a pasta /palpites utilizando glob, identifica cada participante pelo nome do arquivo e lê as planilhas individuais. Também extrai os dados oficiais do arquivo gabarito.xlsx.
 
 Transformação (Transform):
-
 Limpeza e fatiamento dos dados utilizando .iloc.
-
 Identificação dinâmica das fases (Grupos, 16-avos, Oitavas, Quartas, Semi, 3º lugar e Final).
-
 Cruzamento de dados (Merge) entre palpites e resultados reais via idJogo.
-
 Aplicação de regras de negócio complexas para pontuação (filtros booleanos com .loc e .isin).
-
 Tratamento de dados ausentes (NaN) para evitar pontuação em jogos não realizados.
 
-Carga (Load): Geração de um novo arquivo Excel (Resultado_Bolao_Copa.xlsx) contendo duas abas: o Ranking Geral e os Dados Detalhados de cada aposta.
+Carga (Load): 
+Geração de um novo arquivo Excel (Resultado_Bolao_Copa.xlsx) contendo duas abas: o Ranking Geral e os Dados Detalhados de cada aposta.
 
 
 **📈 Regras de Pontuação**
 
 O algoritmo processa diferentes pesos para cada fase do torneio:
-
 | Categoria | Descrição | Pontos |
 | :--- | :--- | :--- |
 | **Fase de Grupos** | Acerto de placar exato | 5 pts |
@@ -63,7 +55,6 @@ Instale as dependências:
 pip install pandas openpyxl
 
 Coloque as planilhas dos participantes na pasta /palpites.
-
 Atualize o gabarito.xlsx com os resultados reais.
 
 Execute o script:
