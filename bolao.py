@@ -25,6 +25,7 @@ terceiro_palpites = {}
 
 # percorrendo todos arquivos dos participantes
 for arquivo in palpites:
+
     # lendo a tabela
     tabela = pd.read_excel(arquivo)
 
@@ -272,8 +273,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_16avos))))
     &
     (tabela_final["fase"] == "16 avos")
-    & 
-    jogo_ocorreu
     ), "pontos"
 ] = 1
 
@@ -283,8 +282,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_16avos))
     &              
     (tabela_final["fase"] == "16 avos")
-    & 
-    jogo_ocorreu
     ), "pontos"
 ] = 2
 
@@ -298,8 +295,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_oitavas))))
     &
     (tabela_final["fase"] == "oitavas")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 2
 
@@ -309,8 +304,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_oitavas))
     &              
     (tabela_final["fase"] == "oitavas")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 4
 
@@ -324,8 +317,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_quartas))))
     &
     (tabela_final["fase"] == "quartas")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 4
 
@@ -335,8 +326,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_quartas))
     &              
     (tabela_final["fase"] == "quartas")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 8
 
@@ -350,8 +339,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_semifinal))))
     &
     (tabela_final["fase"] == "semifinal")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 8
 
@@ -361,8 +348,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_semifinal))
     &              
     (tabela_final["fase"] == "semifinal")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 16
 
@@ -376,8 +361,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_final))))
     &
     (tabela_final["fase"] == "final")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 16
 
@@ -387,8 +370,6 @@ tabela_final.loc[(
     (tabela_final["visitantePalpite"].isin(times_final))
     &              
     (tabela_final["fase"] == "final")
-    &
-    jogo_ocorreu
     ), "pontos"
 ] = 32
 
@@ -409,8 +390,6 @@ for participante, palpite in campeoes_palpites.items():
             &
             (tabela_final["participante"] == participante)
             ), "pontos"
-            &
-            jogo_ocorreu
         ] = 48
 
         tabela_final.loc[(
@@ -421,8 +400,6 @@ for participante, palpite in campeoes_palpites.items():
             (tabela_final["fase"] == "final")
             &
             (tabela_final["participante"] == participante)
-            &
-            jogo_ocorreu
             ), "pontos"
         ] = 64
 
@@ -460,3 +437,11 @@ ranking.insert(0, "posição", range(1, len(ranking) + 1))
 with pd.ExcelWriter("Resultado_Bolao_Copa.xlsx", engine="openpyxl") as writer:
     ranking.to_excel(writer, sheet_name="Ranking Geral", index=False)
     tabela_final.to_excel(writer, sheet_name="Dados Detalhados", index=False)
+
+# %%
+tabela_final
+# %%
+times_final
+# %%
+gabarito.iloc[97,27]
+# %%
